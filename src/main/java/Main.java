@@ -1,12 +1,11 @@
-import kafka.ImageConsumer;
-import kafka.ImageProducer;
+import kafka.*;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.ImageUtils;
+import utils.FileUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +17,7 @@ public class Main {
 
     @Option(name="-type",usage="Define a producer or consumer")
     public static String kafkaType;
-    public static final String KAFKA_PRODUCER_TYPE = "producer";
-    public static final String KAFKA_CONSUMER_TYPE = "consumer";
+
 
     @Option(name="-file",usage="File input for producer")
     public static String fileProduce;
@@ -37,22 +35,38 @@ public class Main {
         logger.info("Starting program...");
 
         new Main().doMain(args);
-        System.out.println("------------"+kafkaType+"-----------");
-        if(kafkaType != null && kafkaType.equals(KAFKA_PRODUCER_TYPE)) {
+
+        if(kafkaType == null) return;
+
+        if(kafkaType.equals(KafkaConstants.KAFKA_IMAGE_PRODUCER_TYPE)) {
             if(mBrokers == null || fileProduce == null) return;
 
             ImageProducer imageProducer = new ImageProducer(mBrokers);
-            imageProducer.sendImage(fileProduce, ImageUtils.extractImageBytes(fileProduce));
+            imageProducer.sendImage(fileProduce, FileUtils.extractImageBytes(fileProduce));
             return;
-        }
-
-        if(kafkaType != null && kafkaType.equals((KAFKA_CONSUMER_TYPE))) {
+        } else if(kafkaType.equals((KafkaConstants.KAFKA_IMAGE_CONSUMER_TYPE))) {
             if(mBrokers == null) return;
             ImageConsumer consumer = new ImageConsumer(mBrokers,mGroupId);
             while(true) {
                 consumer.consumeImage();
             }
+        } else if(kafkaType.equals(KafkaConstants.KAFKA_CLASSIFIER_PRODUCER_TYPE)) {
+            if(mBrokers == null) return;
+            ClassifierProducer producer = new ClassifierProducer(mBrokers);
+            String[] fileSplit = FileUtils.splitFilePath(fileProduce);
+            producer.sendClassifier(fileSplit[fileSplit.length-1],FileUtils.extractFileBytes(fileProduce));
+            return;
+        } else if(kafkaType.equals(KafkaConstants.KAFKA_CLASSIFIER_CONSUMER_TYPE)) {
+            if(mBrokers == null) return;
+            ClassifierConsumer consumer;
+            if(mGroupId == null) consumer = new ClassifierConsumer(mBrokers);
+            else consumer = new ClassifierConsumer(mBrokers,mGroupId);
+
+            while(true) {
+                consumer.consumeClassifier();
+            }
         }
+
         return;
     }
 

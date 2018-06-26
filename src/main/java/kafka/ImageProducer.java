@@ -17,7 +17,7 @@ public class ImageProducer {
     public ImageProducer(String brokers) {
         logger.info("Image topic used : "+IMAGE_TOPIC_NAME);
         KafkaConfig config = new KafkaConfig(brokers, IMAGE_TOPIC_NAME);
-        imProducer = config.setKafkaProducer();
+        imProducer = config.setImageKafkaProducer();
     }
 
     public void sendImage(String imgName, byte[] image) {

@@ -1,6 +1,6 @@
 package utils;
 
-import kafka.ImageConsumer;
+import kafka.KafkaConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,10 +10,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class ImageUtils {
-    private static Logger logger = LoggerFactory.getLogger(ImageUtils.class.getName());
-    public ImageUtils() {
+public class FileUtils {
+    private static Logger logger = LoggerFactory.getLogger(FileUtils.class.getName());
+    public FileUtils() {
     }
 
     public static byte[] extractImageBytes(String imageName) {
@@ -32,10 +35,21 @@ public class ImageUtils {
 
     }
 
-    public static int saveImageBytes(String filePath, byte[] image) {
+    public static byte[] extractFileBytes(String fileName) {
+        try {
+            Path file = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(file);
+            return data;
+        } catch(IOException e) {
+            logger.error(e.getMessage());
+            return null;
+        }
+    }
+
+    public static int saveFileBytes(String filePath, byte[] data) {
         createPath(filePath);
         try (FileOutputStream fos = new FileOutputStream(new File(filePath))) {
-            fos.write(image);
+            fos.write(data);
             return 0;
         } catch (IOException e) {
             logger.error(e.getLocalizedMessage());
@@ -60,6 +74,6 @@ public class ImageUtils {
     }
 
     public static String appendImagePath(String fileName) {
-        return ImageConsumer.PATH_SAVE_IMAGE + '/'+fileName;
+        return KafkaConstants.PATH_SAVE_IMAGE + '/'+fileName;
     }
 }

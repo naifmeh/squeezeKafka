@@ -5,7 +5,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.ImageUtils;
+import utils.FileUtils;
 import utils.KafkaConfig;
 
 import java.util.Collections;
@@ -19,12 +19,11 @@ public class ImageConsumer {
     private String mGroupId;
     private String mBrokers;
     private String mTopic = ImageProducer.IMAGE_TOPIC_NAME;
-    public static String PATH_SAVE_IMAGE = "/home/naif/Documents/squeezeCNN/training-images";
 
     public ImageConsumer(String brokers, String groupId) {
         mGroupId = groupId;
         mBrokers = brokers;
-        imConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).setKafkaConsumer();
+        imConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).setImageKafkaConsumer();
         imConsumer.subscribe(Collections.singletonList(mTopic));
     }
 
@@ -38,12 +37,11 @@ public class ImageConsumer {
     }
 
     private void saveImage(String key, byte[] value) {
-        String[] cutFilePath = ImageUtils.splitFilePath(key);
+        String[] cutFilePath = FileUtils.splitFilePath(key);
         int size = cutFilePath.length;
         if(size == 0) return;
-        String fileName = ImageConsumer.PATH_SAVE_IMAGE+'/'+cutFilePath[size-2]+'/'+cutFilePath[size-1];
-        ImageUtils.saveImageBytes(fileName,value);
+        String fileName = KafkaConstants.PATH_SAVE_IMAGE+'/'+cutFilePath[size-2]+'/'+cutFilePath[size-1];
+        FileUtils.saveFileBytes(fileName,value);
     }
-
 
 }

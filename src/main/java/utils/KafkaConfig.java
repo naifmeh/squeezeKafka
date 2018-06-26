@@ -14,7 +14,7 @@ import java.util.Properties;
 public class KafkaConfig {
 
     private Properties kafkaProps;
-    private String clientId = "fdfdrfg";
+    private String clientId = "012455542";
     private String kafkaBrokers;
     private String kafkaTopic;
     private String kafkaGroupId;
@@ -31,7 +31,7 @@ public class KafkaConfig {
         kafkaGroupId = groupId;
     }
 
-    public KafkaProducer<String, byte[]> setKafkaProducer() {
+    public KafkaProducer<String, byte[]> setImageKafkaProducer() {
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");
         kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"3");
@@ -43,7 +43,31 @@ public class KafkaConfig {
         return new KafkaProducer<>(kafkaProps);
     }
 
-    public KafkaConsumer<String, byte[]> setKafkaConsumer() {
+    @SuppressWarnings("Duplicates")
+    public KafkaConsumer<String, byte[]> setImageKafkaConsumer() {
+        kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
+        kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaGroupId);
+        kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
+        kafkaProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest");
+        kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,ByteArrayDeserializer.class.getName());
+
+        return new KafkaConsumer<>(kafkaProps);
+    }
+
+    public KafkaProducer<String,byte[]> setClassiferKafkaProducer() {
+        kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
+        kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");
+        kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"4");
+        kafkaProps.put(ProducerConfig.CLIENT_ID_CONFIG,clientId);
+        kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                ByteArraySerializer.class.getName());
+
+        return new KafkaProducer<>(kafkaProps);
+    }
+
+    @SuppressWarnings("Duplicates")
+    public KafkaConsumer<String, byte[]> setClassifierKafkaConsumer() {
         kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaGroupId);
         kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
