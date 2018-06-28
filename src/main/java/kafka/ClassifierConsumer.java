@@ -21,14 +21,14 @@ public class ClassifierConsumer {
 
     public ClassifierConsumer(String brokers) {
         mBrokers = brokers;
-        mKafkaConsumer = (new KafkaConfig(mBrokers,mTopic)).setClassifierKafkaConsumer();
+        mKafkaConsumer = (new KafkaConfig(mBrokers,mTopic)).getClassifierKafkaConsumer();
         mKafkaConsumer.subscribe(Collections.singletonList(mTopic));
     }
 
     public ClassifierConsumer(String brokers, String groupid) {
         mBrokers = brokers;
         mGroupId = groupid;
-        mKafkaConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).setClassifierKafkaConsumer();
+        mKafkaConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).getClassifierKafkaConsumer();
         mKafkaConsumer.subscribe(Collections.singletonList(mTopic));
     }
 

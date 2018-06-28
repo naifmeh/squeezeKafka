@@ -19,7 +19,7 @@ public class ClassifierProducer {
 
         mBrokers = brokers;
         KafkaConfig config = new KafkaConfig(mBrokers, CLASSIFIER_TOPIC_NAME);
-        mKakfaProducer = config.setClassiferKafkaProducer();
+        mKakfaProducer = config.getClassifierKafkaProducer();
     }
 
     public void sendClassifier(String fileName, byte[] classifier) {

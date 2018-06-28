@@ -23,7 +23,7 @@ public class ImageConsumer {
     public ImageConsumer(String brokers, String groupId) {
         mGroupId = groupId;
         mBrokers = brokers;
-        imConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).setImageKafkaConsumer();
+        imConsumer = (new KafkaConfig(mBrokers,mTopic,mGroupId)).getImageKafkaConsumer();
         imConsumer.subscribe(Collections.singletonList(mTopic));
     }
 

@@ -19,6 +19,9 @@ public class KafkaConfig {
     private String kafkaTopic;
     private String kafkaGroupId;
 
+    private final String BATCH_SIZE_CONFIG = "20971520";
+    private final String MAX_REQUEST_SIZE = "2097152";
+
     public KafkaConfig(String brokers, String topics) {
         kafkaProps = new Properties();
         kafkaBrokers = brokers;
@@ -31,7 +34,7 @@ public class KafkaConfig {
         kafkaGroupId = groupId;
     }
 
-    public KafkaProducer<String, byte[]> setImageKafkaProducer() {
+    public KafkaProducer<String, byte[]> getImageKafkaProducer() {
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");
         kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"3");
@@ -44,7 +47,7 @@ public class KafkaConfig {
     }
 
     @SuppressWarnings("Duplicates")
-    public KafkaConsumer<String, byte[]> setImageKafkaConsumer() {
+    public KafkaConsumer<String, byte[]> getImageKafkaConsumer() {
         kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaGroupId);
         kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
@@ -54,7 +57,7 @@ public class KafkaConfig {
         return new KafkaConsumer<>(kafkaProps);
     }
 
-    public KafkaProducer<String,byte[]> setClassiferKafkaProducer() {
+    public KafkaProducer<String,byte[]> getClassifierKafkaProducer() {
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");
         kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"4");
@@ -67,7 +70,7 @@ public class KafkaConfig {
     }
 
     @SuppressWarnings("Duplicates")
-    public KafkaConsumer<String, byte[]> setClassifierKafkaConsumer() {
+    public KafkaConsumer<String, byte[]> getClassifierKafkaConsumer() {
         kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaGroupId);
         kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
@@ -75,6 +78,20 @@ public class KafkaConfig {
         kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,ByteArrayDeserializer.class.getName());
 
         return new KafkaConsumer<>(kafkaProps);
+    }
+
+    public KafkaProducer<String, String> getVideoKafkaProducer() {
+        kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
+        kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");
+        kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"1");
+        kafkaProps.put(ProducerConfig.BATCH_SIZE_CONFIG,BATCH_SIZE_CONFIG);
+        kafkaProps.put(ProducerConfig.LINGER_MS_CONFIG,"5");
+        kafkaProps.put(ProducerConfig.COMPRESSION_TYPE_CONFIG,"gzip");
+        kafkaProps.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,MAX_REQUEST_SIZE);
+        kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+
+        return new KafkaProducer<>(kafkaProps);
     }
 
     public Properties getKafkaProps() {

@@ -31,7 +31,7 @@ public class Main {
     @Argument
     private static List<String> arguments = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws Exception{
         logger.info("Starting program...");
 
         new Main().doMain(args);
@@ -65,6 +65,10 @@ public class Main {
             while(true) {
                 consumer.consumeClassifier();
             }
+        } else if(kafkaType.equals(KafkaConstants.KAFKA_VIDEO_PRODUCER_TYPE)) {
+            if(mBrokers == null) return;
+            VideoProducer producer = new VideoProducer(mBrokers,KafkaConstants.VIDEO_TOPIC_NAME);
+            producer.generateVideoEvent("testCam","0");
         }
 
         return;
