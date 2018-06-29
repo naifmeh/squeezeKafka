@@ -66,7 +66,7 @@ public class VideoEventGenerator implements Runnable {
         Gson gson = new Gson();
 
         while(camera.read(mat)) {
-            Imgproc.resize(mat,mat, new Size(640,480), 0, 0, Imgproc.INTER_CUBIC);
+            Imgproc.resize(mat,mat, new Size(400,280), 0, 0, Imgproc.INTER_CUBIC);
             int cols = mat.cols();
             int rows = mat.rows();
             int type = mat.type();
@@ -79,11 +79,13 @@ public class VideoEventGenerator implements Runnable {
             JsonObject obj = new JsonObject();
             obj.addProperty("cameraId",cameraid);
             obj.addProperty("rows",rows);
+            obj.addProperty("cols",cols);
             obj.addProperty("type", type);
             obj.addProperty("data", Base64.getEncoder().encodeToString(data));
             String json = gson.toJson(obj);
 
             producer.send(new ProducerRecord<String, String>(topic, cameraid, json), new EventGeneratorCallback(cameraid));
+            producer.flush();
             logger.info("Generated events for cameraId "+cameraid);
         }
         camera.release();
