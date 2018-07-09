@@ -69,6 +69,12 @@ public class Main {
             if(mBrokers == null) return;
             VideoProducer producer = new VideoProducer(mBrokers,KafkaConstants.VIDEO_TOPIC_NAME);
             producer.generateVideoEvent("testCam","0");
+        } else if(kafkaType.equals(KafkaConstants.KAFKA_VIDEO_CONSUMER_TYPE)) {
+            if(mBrokers == null) return;
+            VideoConsumer consumer = new VideoConsumer(mBrokers, mGroupId);
+            while(true) {
+                consumer.consumerVideoResult();
+            }
         }
 
         return;

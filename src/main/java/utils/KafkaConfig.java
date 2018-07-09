@@ -57,6 +57,16 @@ public class KafkaConfig {
         return new KafkaConsumer<>(kafkaProps);
     }
 
+    public KafkaConsumer<String, String> getVideoKafkaConsumer() {
+        kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
+        kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaGroupId);
+        kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
+        kafkaProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest");
+        kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
+
+        return new KafkaConsumer<>(kafkaProps);
+    }
+
     public KafkaProducer<String,byte[]> getClassifierKafkaProducer() {
         kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBrokers);
         kafkaProps.put(ProducerConfig.ACKS_CONFIG,"0");

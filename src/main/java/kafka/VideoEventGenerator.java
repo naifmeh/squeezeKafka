@@ -14,8 +14,8 @@ import org.opencv.imgproc.Imgproc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Timestamp;
 import java.util.Base64;
+import java.util.Date;
 
 public class VideoEventGenerator implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(VideoEventGenerator.class.getSimpleName());
@@ -74,12 +74,13 @@ public class VideoEventGenerator implements Runnable {
             byte[] data = new byte[(int) (mat.total() * mat.channels())];
             mat.get(0,0, data);
 
-            String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+            long timestamp = new Date().getTime();
 
             JsonObject obj = new JsonObject();
             obj.addProperty("cameraId",cameraid);
             obj.addProperty("rows",rows);
             obj.addProperty("cols",cols);
+            obj.addProperty("timestamp",timestamp);
             obj.addProperty("type", type);
             obj.addProperty("data", Base64.getEncoder().encodeToString(data));
             String json = gson.toJson(obj);
