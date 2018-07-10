@@ -28,6 +28,12 @@ public class Main {
     @Option(name="-groupid",usage="Group ID to which consumer should belong")
     public static String mGroupId;
 
+    @Option(name="-camid")
+    public static String mCamId = "testCam";
+
+    @Option(name="-camurl")
+    public static String mCamUrl = "0";
+
     @Argument
     private static List<String> arguments = new ArrayList<>();
 
@@ -67,8 +73,8 @@ public class Main {
             }
         } else if(kafkaType.equals(KafkaConstants.KAFKA_VIDEO_PRODUCER_TYPE)) {
             if(mBrokers == null) return;
-            VideoProducer producer = new VideoProducer(mBrokers,KafkaConstants.VIDEO_TOPIC_NAME);
-            producer.generateVideoEvent("testCam","0");
+            VideoProducer producer = new VideoProducer(mBrokers,KafkaConstants.VIDEO_TOPIC_NAME,mCamId);
+            producer.generateVideoEvent(mCamUrl);
         } else if(kafkaType.equals(KafkaConstants.KAFKA_VIDEO_CONSUMER_TYPE)) {
             if(mBrokers == null) return;
             VideoConsumer consumer = new VideoConsumer(mBrokers, mGroupId);
