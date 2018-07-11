@@ -22,7 +22,7 @@ public class VideoProducer {
     }
 
     public void generateVideoEvent(String videoUrl) throws Exception {
-        Thread t = new Thread(new VideoEventGenerator(mCamId.trim(),videoUrl.trim(),mKafkaProducer,mTopic));
+        Thread t = new Thread(new VideoFrameCapture(mCamId.trim(),videoUrl.trim(),mKafkaProducer,mTopic));
         t.start();
     }
 }

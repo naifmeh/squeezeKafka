@@ -13,3 +13,6 @@ The command line parameters are
 * -brokers : default is localhost:9092
 * -file : The filePath of the image to send
 * -groupid : if the program is acting as a consumer, this option is required
+
+Problem at jar generation : main class not declared
+Solution : Move META-INF folder from /java to /resources
