@@ -12,7 +12,7 @@ public class ImageProducer {
 
     private KafkaProducer<String, byte[]> imProducer;
 
-    public static final String IMAGE_TOPIC_NAME = "training-img-topic";
+    public static final String IMAGE_TOPIC_NAME = KafkaConstants.IMAGE_TOPIC_NAME;
 
     public ImageProducer(String brokers) {
         logger.info("Image topic used : "+IMAGE_TOPIC_NAME);

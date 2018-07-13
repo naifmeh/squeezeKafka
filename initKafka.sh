@@ -23,6 +23,5 @@ elif [ "$2" == "delete" ]; then
     `bin/kafka-topics.sh --zookeeper localhost:2181  --delete --topic classifier-pkl-topic`
 
 elif [ "$2" == "shutdown" ]; then
-
     $KAFKA_PATH/bin/kafka-server-stop.sh
 fi

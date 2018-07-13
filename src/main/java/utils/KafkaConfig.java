@@ -96,7 +96,7 @@ public class KafkaConfig {
         kafkaProps.put(ProducerConfig.RETRIES_CONFIG,"1");
         kafkaProps.put(ProducerConfig.BATCH_SIZE_CONFIG,BATCH_SIZE_CONFIG);
         kafkaProps.put(ProducerConfig.LINGER_MS_CONFIG,"5");
-        kafkaProps.put(ProducerConfig.COMPRESSION_TYPE_CONFIG,"gzip");
+        kafkaProps.put(ProducerConfig.COMPRESSION_TYPE_CONFIG,"snappy");
         kafkaProps.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,MAX_REQUEST_SIZE);
         kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
         kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
