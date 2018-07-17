@@ -9,11 +9,6 @@
     <list default="true" id="5420cbac-0711-4e2c-bcf9-ff76a30a31f6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initKafka.sh" beforeDir="false" afterPath="$PROJECT_DIR$/initKafka.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kafka/ImageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kafka/ImageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kafka/ImageProducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kafka/ImageProducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kafka/VideoFrameCapture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kafka/VideoFrameCapture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/KafkaConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/KafkaConfig.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,7 +51,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
+            <state relative-caret-position="1110">
               <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
             </state>
           </provider>
@@ -80,14 +75,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoFrameCapture.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VideoFrameCapture.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kafka/VideoFrameCapture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+            <state relative-caret-position="203">
+              <caret line="68" column="48" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="initKafka.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/initKafka.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="190" selection-start-line="15" selection-start-column="190" selection-end-line="15" selection-end-column="190" />
             </state>
           </provider>
         </entry>
@@ -116,8 +120,8 @@
       <file leaf-file-name="KafkaConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="98" column="69" selection-start-line="98" selection-start-column="69" selection-end-line="98" selection-end-column="69" />
+            <state relative-caret-position="298">
+              <caret line="96" column="72" lean-forward="true" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,10 +163,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/initKafka.sh" />
         <option value="$PROJECT_DIR$/src/main/java/kafka/ImageProducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/kafka/VideoFrameCapture.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java" />
+        <option value="$PROJECT_DIR$/initKafka.sh" />
       </list>
     </option>
   </component>
@@ -196,6 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,9 +254,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,7 +289,7 @@
     <configuration name="ClassifierConsumer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="squeezekafka" />
-      <option name="PROGRAM_PARAMETERS" value="-type classifier-consumer -brokers localhost:9092 -file $PROJECT_DIR$/src/main/resources/images/classifier/classifier.pkl -groupid test23" />
+      <option name="PROGRAM_PARAMETERS" value="-type classifier-consumer -brokers 179.106.238.28:9092 -groupid test24" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="ClassifierProducer" type="Application" factoryName="Application">
@@ -309,7 +313,7 @@
     <configuration name="VideoProducer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="squeezekafka" />
-      <option name="PROGRAM_PARAMETERS" value="-type video-producer -brokers localhost:9092 -camid testCam" />
+      <option name="PROGRAM_PARAMETERS" value="-type video-producer -brokers 179.106.238.28:9092 -camid testCam" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="VideoProducerCam2" type="Application" factoryName="Application">
@@ -321,7 +325,7 @@
     <configuration name="VideoResConsumer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="squeezekafka" />
-      <option name="PROGRAM_PARAMETERS" value="-type video-consumer -brokers localhost:9092 -groupid test23" />
+      <option name="PROGRAM_PARAMETERS" value="-type video-consumer -brokers 179.106.238.28:9092 -groupid test23" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -409,7 +413,9 @@
       <workItem from="1531332476571" duration="744000" />
       <workItem from="1531404859428" duration="825000" />
       <workItem from="1531411784460" duration="4013000" />
-      <workItem from="1531505119281" duration="1776000" />
+      <workItem from="1531505119281" duration="1801000" />
+      <workItem from="1531769391660" duration="992000" />
+      <workItem from="1531846733037" duration="8681000" />
     </task>
     <task id="LOCAL-00001" summary="Classifier consumer producer done">
       <created>1530029055954</created>
@@ -467,11 +473,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531333138585</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Modified compression algorithm">
+      <created>1531508866534</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1531508866534</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123902000" />
+    <option name="totallyTimeSpent" value="133600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="66" width="1853" height="1055" extended-state="6" />
@@ -487,11 +500,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32804233" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32804233" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12682137" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12682137" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -509,26 +522,26 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32932693" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.26516855" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32932693" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
@@ -550,7 +563,8 @@
     <MESSAGE value="Added video consumer" />
     <MESSAGE value="Modified to allow multithreading" />
     <MESSAGE value="Updated documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation" />
+    <MESSAGE value="Modified compression algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified compression algorithm" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -843,16 +857,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/initKafka.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
+        <state relative-caret-position="1110">
           <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
         </state>
       </provider>
@@ -895,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="98" column="69" selection-start-line="98" selection-start-column="69" selection-end-line="98" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kafka/VideoProducer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -914,11 +911,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kafka/VideoFrameCapture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+        <state relative-caret-position="203">
+          <caret line="68" column="48" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/KafkaConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="96" column="72" lean-forward="true" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initKafka.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="190" selection-start-line="15" selection-start-column="190" selection-end-line="15" selection-end-column="190" />
         </state>
       </provider>
     </entry>
