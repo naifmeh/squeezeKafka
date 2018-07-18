@@ -3,9 +3,8 @@ KAFKA_PATH=$1
 
 if [ "$2" == "start" ];then
 
-    #running zookeeper
-    sudo service zookeeper start
-
+    #launching zookeeper
+    $KAFKA_PATH/bin/zookeeper-server-start.sh $KAFKA_PATH/config/zookeeper.properties &
     #launching kafka
     $KAFKA_PATH/bin/kafka-server-start.sh $KAFKA_PATH/config/server.properties &
 
