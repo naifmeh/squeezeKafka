@@ -64,6 +64,8 @@ The provided script initKafka.sh takes the Kafka path as argument and do all the
 The second argument should either be start, delete or shutdown.
 The kafka broker should be launched with the provided configuration file.
 
+The kafkaLimit script is to belaunched on critically limited systems to automatically remove the logs taking too much space.
+
 # Problems encountered :
 
 Problem at jar generation : main class not declared
