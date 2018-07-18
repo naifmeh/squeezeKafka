@@ -62,6 +62,7 @@ The topic to be created are :
 
 The provided script initKafka.sh takes the Kafka path as argument and do all the dirty job such as starting the broker and creating the topics, deleting them and shutting down the server.
 The second argument should either be start, delete or shutdown.
+The kafka broker should be launched with the provided configuration file.
 
 # Problems encountered :
 
