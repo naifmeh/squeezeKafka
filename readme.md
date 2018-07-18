@@ -68,3 +68,6 @@ The kafka broker should be launched with the provided configuration file.
 
 Problem at jar generation : main class not declared
 Solution : Move META-INF folder from /java to /resources
+
+If the kafka broker doesn't start, the zookeeper is probably in fault, or the server IP in the configuration file. Also use du -sh /tmp/kafka-logs/* to check if the logs are taking too much space
+which may be causing kafka to fail.
