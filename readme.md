@@ -66,6 +66,9 @@ The kafka broker should be launched with the provided configuration file.
 
 The kafkaLimit script is to be launched in background on critically limited systems to automatically remove the logs taking too much space. 
 
+Initiate the video consumer if you are using the server treatment. 
+*Always initiate the classifier producer if you are planning to handle new faces.*
+
 # Problems encountered :
 
 Problem at jar generation : main class not declared
